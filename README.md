@@ -102,6 +102,7 @@ service endpoints.
 3. Provide a Junit, at the level of the service or controller that will act as the integration test, utilising no remote
 mocking.
 4. Optimise Junits' execution time: cut some corners in Junits.
+5. Make integration test clean up after themselves regarding the API calls that created new entities during the test.
 
 ``Are you having trouble? Call Patt!``
 My Postman collection of requests is provided in the source tree. It does include some of the remote requests and most
