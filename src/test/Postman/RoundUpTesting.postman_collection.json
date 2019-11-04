@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "f4118afd-fefd-46fd-84e4-615499e790b6",
+		"name": "RoundUpTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAccounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "271a03e9-7175-4977-9c7e-baca2ce15539",
+						"exec": [
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-sandbox.starlingbank.com/api/v2/accounts",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"starlingbank",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAccountIDs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-sandbox.starlingbank.com/api/v2/accounts/{{accountUid}}/identifiers",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"starlingbank",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"accounts",
+						"{{accountUid}}",
+						"identifiers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBalance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-sandbox.starlingbank.com/api/v2/accounts/{{accountUid}}/balance",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"starlingbank",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"accounts",
+						"{{accountUid}}",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFeed",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-sandbox.starlingbank.com/api/v2/feed/account/{{accountUid}}/category/{{categoryUid}}",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"starlingbank",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"feed",
+						"account",
+						"{{accountUid}}",
+						"category",
+						"{{categoryUid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TriggerRoundup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/trigger/roundup/{{dayOfWeek}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trigger",
+						"roundup",
+						"{{dayOfWeek}}"
+					]
+				},
+				"description": "Request to local tomocat to trigger the roundup process."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{bearerToken}",
+				"type": "string"
+			}
+		]
+	},
+	"protocolProfileBehavior": {}
+}
